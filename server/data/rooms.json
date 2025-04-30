@@ -1,22 +1,27 @@
 [
     {
-        "_id": "603d9d0b5f1b2c6d32fdf1b1",
-        "roomNumber": "101",
-        "type": "Single",
-        "price": 100,
-        "booked": false,
-        "availability": [
-            { "from": "2025-05-01", "to": "2025-05-05" }
-        ]
+        "type": "Single room",
+        "price": 50,
+        "available": 10
     },
     {
-        "_id": "603d9d0b5f1b2c6d32fdf1b2",
-        "roomNumber": "102",
-        "type": "Double",
-        "price": 150,
-        "booked": false,
-        "availability": [
-            { "from": "2025-05-10", "to": "2025-05-15" }
-        ]
+        "type": "Double room small",
+        "price": 50,
+        "available": 10
+    },
+    {
+        "type": "Double room",
+        "price": 80,
+        "available": 5
+    },
+    {
+        "type": "Family room",
+        "price": 50,
+        "available": 10
+    },
+    {
+        "type": "Royal suite",
+        "price": 50,
+        "available": 1
     }
-]  
+]

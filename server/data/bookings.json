@@ -1,7 +1,8 @@
 [
     {
         "userId": "1",
-        "roomId": "3",
+        "roomType": "Single room",
+        "price": 500,
         "from": "2025-05-01",
         "to": "2025-05-05"
     }
