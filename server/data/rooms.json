@@ -1,0 +1,22 @@
+[
+    {
+        "_id": "603d9d0b5f1b2c6d32fdf1b1",
+        "roomNumber": "101",
+        "type": "Single",
+        "price": 100,
+        "booked": false,
+        "availability": [
+            { "from": "2025-05-01", "to": "2025-05-05" }
+        ]
+    },
+    {
+        "_id": "603d9d0b5f1b2c6d32fdf1b2",
+        "roomNumber": "102",
+        "type": "Double",
+        "price": 150,
+        "booked": false,
+        "availability": [
+            { "from": "2025-05-10", "to": "2025-05-15" }
+        ]
+    }
+]  
