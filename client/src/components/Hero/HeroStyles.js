@@ -13,7 +13,16 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         objectFit: 'cover',
-    }
+    },
+
+    heroHeader: {
+        position: 'absolute',
+        zIndex: '1',
+        justifySelf: 'anchor-center',
+        color: 'white',
+        fontSize: '146px',
+        fontFamily: 'Raleway, sans-serrif',
+    },
 });
 
 export default styles;
