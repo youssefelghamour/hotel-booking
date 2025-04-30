@@ -21,6 +21,11 @@ class DBClient {
                 await this.client.connect();
                 this.db = this.client.db(this.dbName);
 
+                // Initialize collections
+                this.usersCollection = this.db.collection('users');
+                this.roomsCollection = this.db.collection('rooms');
+                this.bookingsCollection = this.db.collection('bookings');
+
                 // Mark connection as established
                 this.isAlive = true;
                 console.log('db.js: Connected to MongoDB');
