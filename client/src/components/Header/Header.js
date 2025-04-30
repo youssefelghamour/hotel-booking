@@ -8,14 +8,14 @@ class Header extends Component {
         return (
             <header className={css(styles.appHeader)}>
                 <div className={css(styles.headerLogoContainer)}>
-                    <h2 className={css(styles.appHeaderTitle)}>Hotel</h2>
+                    <h2 className={css(styles.appHeaderTitle)}>Vermillion</h2>
                 </div>
     
                 <nav className={css(styles.nav)}>
-                    <a className={css(styles.navLink)} href="#">Home</a>
-                    <a className={css(styles.navLink)} href="#">Rooms</a>
-                    <a className={css(styles.navLink)} href="#">About Us</a>
-                    <a className={css(styles.navLink)} href="#">Login</a>
+                    <a className={css(styles.navLink)} href="http://localhost:3000">Home</a>
+                    <a className={css(styles.navLink)} href="http://localhost:3000">Rooms</a>
+                    <a className={css(styles.navLink)} href="http://localhost:3000">About Us</a>
+                    <a className={css(styles.navLink)} href="http://localhost:3000">Login</a>
                 </nav>
             </header>
         );

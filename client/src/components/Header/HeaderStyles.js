@@ -10,8 +10,11 @@ const styles = StyleSheet.create({
         color: '#2b3ab6',
         width: '100%',
         backgroundColor: 'white',
-        padding: '2% 3%',
+        padding: '1% 3%',
         justifyContent: 'space-between',
+        position: 'absolute',
+        zIndex: '1',
+        background: 'transparent',
     },
   
     headerLogoContainer: {
