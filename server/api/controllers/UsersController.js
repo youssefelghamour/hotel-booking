@@ -21,17 +21,7 @@ class UsersController {
                     password,
                 };
 
-                const checkUser = await dbClient.usersCollection.findOne({ email });
-                if (checkUser.password !== password) {
-                    return res.status(401).json({ message: 'Invalid credentials' });
-                }
-                
-                if (checkUser) {
-                    return res.status(200).json({
-                        _id: checkUser._id.toString(),
-                        ...checkUser
-                    });
-                }
+
 
                 // Insert into the database
                 const result = await dbClient.usersCollection.insertOne(newUser);

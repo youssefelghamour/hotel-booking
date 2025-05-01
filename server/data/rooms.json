@@ -2,31 +2,37 @@
     {
         "type": "Single room",
         "price": 50,
-        "available": 10
+        "available": 10,
+        "description": "A cozy room perfect for solo travelers. It features a comfortable bed, basic amenities, and a serene atmosphere to relax and recharge. Ideal for short stays."
     },
     {
         "type": "Double small",
         "price": 90,
-        "available": 10
+        "available": 10,
+        "description": "A smaller yet comfortable option for two guests. It includes a double bed and essential amenities for a peaceful stay. Great for couples or friends on a budget."
     },
     {
         "type": "Double room",
         "price": 120,
-        "available": 5
+        "available": 5,
+        "description": "A spacious room with a larger double bed, offering ample space for two guests. Includes all necessary amenities for a comfortable stay, making it perfect for couples or friends."
     },
     {
         "type": "Family room",
         "price": 450,
-        "available": 10
+        "available": 10,
+        "description": "Designed for families, this room offers more space and extra bedding options. It features a large bed, additional sleeping arrangements, and family-friendly amenities."
     },
     {
         "type": "Royal suite",
         "price": 2800,
-        "available": 1
+        "available": 1,
+        "description": "A luxurious suite with premium features, including a king-size bed, elegant décor, spacious living area, and top-tier amenities. Perfect for those seeking an extravagant stay."
     },
     {
         "type": "Presidential Suite",
         "price": 3200,
-        "available": 1
+        "available": 1,
+        "description": "The ultimate in luxury, this suite offers unparalleled comfort with exclusive features, including a massive living area, multiple bedrooms, and exceptional service. Ideal for high-end guests looking for the best experience."
     }
 ]

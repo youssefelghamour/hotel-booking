@@ -8,7 +8,7 @@ const images = {
     "Double room": require('../../assets/double.png'),
     "Family room": require('../../assets/family.png'),
     "Royal suite": require('../../assets/royal.jpg'),
-    "Presidential Suite": require('../../assets/royal.jpg'),
+    "Presidential Suite": require('../../assets/presidential.jpg'),
 };
 
 

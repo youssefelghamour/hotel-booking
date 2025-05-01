@@ -61,7 +61,10 @@ const styles = StyleSheet.create({
         ':disabled': {
             background: '#ccc',
             cursor: 'not-allowed',
-        }
+        },
+        ':hover': {
+            background: '#b0a05c',
+        },
     }
 });
 
