@@ -25,11 +25,13 @@ const styles = StyleSheet.create({
     appHeaderTitle: {
         fontSize: 18,
         marginLeft: 10,
+        color: 'white',
     },
   
     headerLogo: {
-        height: 40,
+        height: 30,
         filter: 'contrast(1.5)',
+        borderRadius: '10px',
     },
   
     nav: {
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
   
     navLink: {
         textDecoration: 'none',
-        color: '#2b3ab6',
+        color: 'white',
         fontSize: 17,
         margin: '0 12px',
         transition: 'transform 0.3s ease',

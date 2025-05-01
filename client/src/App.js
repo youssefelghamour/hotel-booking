@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Rooms from './components/Rooms/Rooms';
 import BookingForm from './components/BookingForm/BookingForm';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,8 @@ class App extends Component {
         {this.state.selectedRoom && (
           <BookingForm room={this.state.selectedRoom} handleRoomSelect={this.handleRoomSelect}/>
         )}
+
+        <Footer />
       </div>
     );
   }

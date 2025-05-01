@@ -3,8 +3,8 @@ import { StyleSheet } from 'aphrodite';
 const styles = StyleSheet.create({
     rooms: {
         padding: '2rem',
-        position: 'absolute',
-        top: '500px',
+        position: 'relative',
+        top: '-220px',
     },
 
     header: {

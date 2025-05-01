@@ -9,7 +9,7 @@ class Hero extends Component {
     render() {
         return (
             <div className={css(styles.hero)}>
-                <h2 className={css(styles.heroHeader)}>VERMILLION</h2>
+                <h2 className={css(styles.heroHeader)}>AURUM</h2>
                 <p className={css(styles.heroText)}>Modern Tranquility, Beautifully Delivered.</p>
                 <img src={heroImage} alt="hero" className={css(styles.heroImage)} />
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { css } from 'aphrodite';
 import styles from "./HeaderStyles";
+import logo from "../../assets/logo.jpg";
 
 
 class Header extends Component {
@@ -8,7 +9,8 @@ class Header extends Component {
         return (
             <header className={css(styles.appHeader)}>
                 <div className={css(styles.headerLogoContainer)}>
-                    <h2 className={css(styles.appHeaderTitle)}>Vermillion</h2>
+                    <img src={logo} alt="logo" className={css(styles.headerLogo)} />
+                    <h2 className={css(styles.appHeaderTitle)}>Aurum</h2>
                 </div>
     
                 <nav className={css(styles.nav)}>

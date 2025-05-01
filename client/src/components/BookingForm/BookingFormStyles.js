@@ -8,9 +8,8 @@ const styles = StyleSheet.create({
         background: '#fff',
         boxShadow: 'rgb(0 0 0 / 21%) 4px 4px 16px',
         position: 'relative',
-        marginTop: '390px',
         width: '700px',
-        marginBottom: '80px',
+        top: '-170px',
     },
 
     header: {
