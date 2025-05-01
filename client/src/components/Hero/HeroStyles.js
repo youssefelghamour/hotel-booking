@@ -23,6 +23,16 @@ const styles = StyleSheet.create({
         fontSize: '146px',
         fontFamily: 'Raleway, sans-serrif',
     },
+
+    heroText: {
+        position: 'absolute',
+        zIndex: '1',
+        justifySelf: 'anchor-center',
+        color: 'white',
+        fontSize: '30px',
+        fontFamily: 'Raleway, sans-serrif',
+        top: '40%',
+    },
 });
 
 export default styles;

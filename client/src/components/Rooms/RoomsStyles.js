@@ -19,11 +19,9 @@ const styles = StyleSheet.create({
     },
 
     room: {
-        border: '1px solid #ccc',
-        borderRadius: '8px',
         padding: '1rem',
         background: '#fff',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        boxShadow: 'rgb(0 0 0 / 21%) 4px 4px 16px',
         ':hover': {
             transform: 'scale(1.01)',
         },

@@ -6,22 +6,27 @@
     },
     {
         "type": "Double small",
-        "price": 50,
+        "price": 90,
         "available": 10
     },
     {
         "type": "Double room",
-        "price": 80,
+        "price": 120,
         "available": 5
     },
     {
         "type": "Family room",
-        "price": 50,
+        "price": 450,
         "available": 10
     },
     {
         "type": "Royal suite",
-        "price": 50,
+        "price": 2800,
+        "available": 1
+    },
+    {
+        "type": "Presidential Suite",
+        "price": 3200,
         "available": 1
     }
 ]

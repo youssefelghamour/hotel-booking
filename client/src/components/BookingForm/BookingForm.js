@@ -1,0 +1,102 @@
+import React, { Component } from 'react';
+import { css } from 'aphrodite';
+import styles from './BookingFormStyles';
+
+class BookingForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            email: '',
+            password: '',
+            fromDate: '',
+            toDate: '',
+            room: props.room || {},
+        };
+    }
+
+    handleInputChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, email, password, fromDate, toDate, room } = this.state;
+        console.log('Booking Details:', { name, email, password, fromDate, toDate, room });
+    };
+
+    render() {
+        const { room } = this.state;
+        return (
+            <div className={css(styles.bookingForm)}>
+                <h2 className={css(styles.header)}>Booking Form</h2>
+                <form onSubmit={this.handleSubmit} className={css(styles.form)}>
+                <div className={css(styles.formGroup)}>
+                    <input
+                        type="text"
+                        name="name"
+                        value={this.state.name}
+                        onChange={this.handleInputChange}
+                        required
+                        placeholder='Name'
+                        className={css(styles.input)}
+                    />
+                </div>
+                <div className={css(styles.formGroup)}>
+                    <input
+                        type="email"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleInputChange}
+                        required
+                        placeholder='Email'
+                        className={css(styles.input)}
+                    />
+                </div>
+                <div className={css(styles.formGroup)}>
+                    <input
+                        type="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleInputChange}
+                        required
+                        placeholder='Password'
+                        className={css(styles.input)}
+                    />
+                </div>
+                <div className={css(styles.formGroup)}>
+                    <input
+                    type="date"
+                    name="fromDate"
+                    value={this.state.fromDate}
+                    onChange={this.handleInputChange}
+                    required
+                    placeholder='From Date'
+                    className={css(styles.input)}
+                    />
+                </div>
+                <div className={css(styles.formGroup)}>
+                    <input
+                    type="date"
+                    name="toDate"
+                    value={this.state.toDate}
+                    onChange={this.handleInputChange}
+                    required
+                    placeholder='To Date'
+                    className={css(styles.input)}
+                    />
+                </div>
+
+                <div className={css(styles.roomInfo)}>
+                    <h3 className={css(styles.roomTitle)}>Room Info</h3>
+                    <p className={css(styles.roomText)}><strong>Type:</strong> {room.type}</p>
+                    <p className={css(styles.roomText)}><strong>Price:</strong> ${room.price}</p>
+                </div>
+                <button type="submit" className={css(styles.button)}>Submit Booking</button>
+                </form>
+            </div>
+        );
+    }
+}
+
+export default BookingForm;

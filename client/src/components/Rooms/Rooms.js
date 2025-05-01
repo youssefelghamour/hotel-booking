@@ -8,6 +8,7 @@ const images = {
     "Double room": require('../../assets/double.png'),
     "Family room": require('../../assets/family.png'),
     "Royal suite": require('../../assets/royal.jpg'),
+    "Presidential Suite": require('../../assets/royal.jpg'),
 };
 
 
@@ -26,7 +27,7 @@ class Room extends Component {
                 <h3 className={css(styles.roomTitle)}>{type}</h3>
                 <p className={css(styles.roomText)}>Price: ${price}</p>
                 <p className={css(styles.roomText)}>Available: {available}</p>
-                <button className={css(styles.button)} disabled={available === 0}>Book Now</button>
+                <button className={css(styles.button)} disabled={available === 0} onClick={() => this.props.onBook({ type, price, available })}>Book Now</button>
             </div>
             
         </div>
@@ -63,7 +64,7 @@ class Rooms extends Component {
         <div className={css(styles.rooms)}>
             <div className={css(styles.roomList)}>
                 {this.state.rooms.map((room, index) => (
-                    <Room key={index} {...room} />
+                    <Room key={index} {...room} onBook={this.props.onRoomSelect} />
                 ))}
             </div>
         </div>
