@@ -26,7 +26,7 @@ class App extends Component {
         <Rooms onRoomSelect={this.handleRoomSelect} />
 
         {this.state.selectedRoom && (
-          <BookingForm room={this.state.selectedRoom} />
+          <BookingForm room={this.state.selectedRoom} handleRoomSelect={this.handleRoomSelect}/>
         )}
       </div>
     );

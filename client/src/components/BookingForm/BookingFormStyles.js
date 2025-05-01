@@ -7,10 +7,10 @@ const styles = StyleSheet.create({
         margin: '0 auto',
         background: '#fff',
         boxShadow: 'rgb(0 0 0 / 21%) 4px 4px 16px',
-        position: 'absolute',
-        top: '1080px',
+        position: 'relative',
+        marginTop: '390px',
         width: '700px',
-        marginBottom: '200px',
+        marginBottom: '80px',
     },
 
     header: {

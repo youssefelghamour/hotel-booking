@@ -19,14 +19,63 @@ class BookingForm extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
-    handleSubmit = (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
         const { name, email, password, fromDate, toDate, room } = this.state;
-        console.log('Booking Details:', { name, email, password, fromDate, toDate, room });
+        
+        try {
+            // Create User
+            const userResponse = await fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password }),
+            });
+        
+            if (!userResponse) {
+                throw new Error('Failed to create user');
+            }
+        
+            const user = await userResponse.json();
+            console.log('User created:', user);
+            console.log('room:', room);
+        
+            // Create Booking (also decreses the room availability ofthis room by 1)
+            const bookingResponse = await fetch('http://localhost:5000/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userId: user._id, // Use the user ID returned from creating the user
+                    roomId: room._id, // Assuming room has an `id` property
+                    checkInDate: fromDate,
+                    checkOutDate: toDate,
+                }),
+            });
+        
+            if (!bookingResponse) {
+                throw new Error('Failed to create booking');
+            }
+        
+            const booking = await bookingResponse.json();
+        
+            console.log('Booking confirmed:', booking);
+
+            // Reset room to null after successful booking
+            this.setState({ room: null });
+            // Call the parent component's method to reset the selected room
+            // This will hide the form
+            this.props.handleRoomSelect(null);
+        } catch (error) {
+            console.error('Error in booking process:', error);
+        }
     };
 
     render() {
         const { room } = this.state;
+
         return (
             <div className={css(styles.bookingForm)}>
                 <h2 className={css(styles.header)}>Booking Form</h2>

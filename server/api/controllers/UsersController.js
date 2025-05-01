@@ -7,7 +7,42 @@ const dbClient = require('../../utils/db');
 class UsersController {
     /* CREATE /users: creates a new user */
     async createUser(req, res) {
-        res.send('Create a new user');
+        const { name, email, password } = req.body;
+
+            if (!name || !email || !password) {
+                return res.status(400).json({ message: 'Name, email, and password are required' });
+            }
+
+            try {
+                // Create a new user
+                const newUser = {
+                    name,
+                    email,
+                    password,
+                };
+
+                const checkUser = await dbClient.usersCollection.findOne({ email });
+                if (checkUser.password !== password) {
+                    return res.status(401).json({ message: 'Invalid credentials' });
+                }
+                
+                if (checkUser) {
+                    return res.status(200).json({
+                        _id: checkUser._id.toString(),
+                        ...checkUser
+                    });
+                }
+
+                // Insert into the database
+                const result = await dbClient.usersCollection.insertOne(newUser);
+
+                return res.status(201).json({
+                    _id: result.insertedId.toString(),
+                    ...newUser
+                });
+            } catch (error) {
+                return res.status(500).json({ message: 'Error creating user', error });
+            }
     }
 
 

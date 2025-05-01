@@ -14,7 +14,8 @@ const images = {
 
 class Room extends Component {
   render() {
-    const { type, price, available } = this.props;
+    const { room } = this.props;
+    const { type, price, available } = {...room};
 
     return (
         <div className={css(styles.room)}>
@@ -27,7 +28,7 @@ class Room extends Component {
                 <h3 className={css(styles.roomTitle)}>{type}</h3>
                 <p className={css(styles.roomText)}>Price: ${price}</p>
                 <p className={css(styles.roomText)}>Available: {available}</p>
-                <button className={css(styles.button)} disabled={available === 0} onClick={() => this.props.onBook({ type, price, available })}>Book Now</button>
+                <button className={css(styles.button)} disabled={available === 0} onClick={() => this.props.onBook(room)}>Book Now</button>
             </div>
             
         </div>
@@ -64,7 +65,7 @@ class Rooms extends Component {
         <div className={css(styles.rooms)}>
             <div className={css(styles.roomList)}>
                 {this.state.rooms.map((room, index) => (
-                    <Room key={index} {...room} onBook={this.props.onRoomSelect} />
+                    <Room key={index} room={room} onBook={this.props.onRoomSelect} />
                 ))}
             </div>
         </div>
