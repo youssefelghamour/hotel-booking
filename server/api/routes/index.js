@@ -3,6 +3,7 @@ const path = require('path');
 const UsersController = require('../controllers/UsersController');
 const RoomsController = require('../controllers/RoomsController');
 const BookingsController = require('../controllers/BookingsController');
+const AuthController = require('../controllers/AuthController');
 
 
 const router = express.Router();
@@ -52,6 +53,12 @@ router.get('/bookings/:id', BookingsController.getBookingByID);
 router.put('/bookings/:id', BookingsController.updateBooking);
 // DELETE a booking by id
 router.delete('/bookings/:id', BookingsController.deleteBooking);
+
+
+/* Login Route */
+
+// POST login
+router.post('/login', AuthController.login);
 
 
 module.exports = router;
