@@ -27,13 +27,15 @@ class Login extends Component {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
+        credentials: 'include', // Include cookies in the request
       });
 
       const data = await response.json();
 
       if (response.ok) {
         // Save token to localStorage
-        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('accessToken', data.accessToken);
+        console.log('login accessToken:', data.accessToken);
         this.props.handleLogin({ email }); // Updating parent component state
       } else {
         this.setState({ error: data.message || 'An error occurred' });

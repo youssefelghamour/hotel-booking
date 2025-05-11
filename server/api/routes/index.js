@@ -59,6 +59,12 @@ router.delete('/bookings/:id', BookingsController.deleteBooking);
 
 // POST login
 router.post('/login', AuthController.login);
+// POST refresh token
+router.post('/refresh', AuthController.refresh);
+// POST logout
+router.post('/logout', AuthController.logout);
+// GET logged in user
+router.get('/profile', AuthController.getLoggedInUser);
 
 
 module.exports = router;
