@@ -3,9 +3,9 @@
  */
 const express = require('express');
 const cors = require('cors');
-const dbClient = require('../utils/db');
 const routes = require('./routes/index');
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 
@@ -23,8 +23,12 @@ app.use('/', routes);
 
 // Ensure the database connection is established before running the API app
 (async () => {
-    // Wait for the db connection
-    await dbClient.connect();
+    // Connect to MongoDB using Mongoose
+    await mongoose.connect('mongodb://localhost:27017/hotel', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
     app.listen(port, () => {
         console.log(`API is running on port ${port}`);
     });

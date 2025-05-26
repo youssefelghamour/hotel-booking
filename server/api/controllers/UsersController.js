@@ -1,4 +1,4 @@
-const dbClient = require('../../utils/db');
+const User = require('../models/User');
 
 
 /**
@@ -9,42 +9,38 @@ class UsersController {
     async createUser(req, res) {
         const { name, email, password } = req.body;
 
-            if (!name || !email || !password) {
-                return res.status(400).json({ message: 'Name, email, and password are required' });
-            }
+        if (!name || !email || !password) {
+            return res.status(400).json({ message: 'Name, email, and password are required' });
+        }
 
-            try {
-                // Create a new user
-                const newUser = {
-                    name,
-                    email,
-                    password,
-                };
+        try {
+            // Create a new user
+            const newUser = await User.create({
+                name,
+                email,
+                password,
+            });
 
-
-
-                // Insert into the database
-                const result = await dbClient.usersCollection.insertOne(newUser);
-
-                return res.status(201).json({
-                    _id: result.insertedId.toString(),
-                    ...newUser
-                });
-            } catch (error) {
-                return res.status(500).json({ message: 'Error creating user', error });
-            }
+            return res.status(201).json({
+                _id: newUser._id.toString(),
+                name: newUser.name,
+                email: newUser.email,
+            });
+        } catch (error) {
+            return res.status(500).json({ message: 'Error creating user', error });
+        }
     }
 
 
     /* GET /users: returns all the users from the usersCollection */
     async getUsers(req, res) {
-        // Fetch all users (toArray because find() returns a cursor)
-        let users = await dbClient.usersCollection.find().toArray();
+        let users = await User.find().lean();
 
         users = users.map((user) => {
             return {
                 _id: user._id.toString(),
-                ...user
+                name: user.name,
+                email: user.email,
             };
         });
 
