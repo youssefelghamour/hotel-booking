@@ -1,4 +1,6 @@
-const dbClient = require('../../utils/db');
+const Booking = require('../models/Booking');
+const User = require('../models/User');
+const Room = require('../models/Room');
 const { ObjectId } = require('mongodb');
 
 
@@ -16,42 +18,33 @@ class BookingsController {
 
         try {
             // Check if the user exists
-            const user = await dbClient.usersCollection.findOne({ _id: new ObjectId(userId) });
-            if (!user) {
-                return res.status(404).json({ message: 'User not found' });
-            }
+            const user = await User.findById({ _id: new ObjectId(userId) });
+            if (!user) return res.status(404).json({ message: 'User not found' });
 
             // Check if the room exists
-            const room = await dbClient.roomsCollection.findOne({ _id: new ObjectId(roomId) });
-            if (!room) {
-                return res.status(404).json({ message: 'Room not found' });
-            }
+            const room = await Room.findById({ _id: new ObjectId(roomId) });
+            if (!room) return res.status(404).json({ message: 'Room not found' });
 
             // Check room availability
-            if (room.available <= 0) {
-                return res.status(400).json({ message: 'Room is not available' });
-            }
+            if (room.available <= 0) return res.status(400).json({ message: 'Room is not available' });
 
             // Create the booking
-            const newBooking = {
-                userId: new ObjectId(userId),
-                roomId: new ObjectId(roomId),
+            const newBooking = await Booking.create({
+                user: user._id,
+                room: room._id,
                 checkInDate,
                 checkOutDate,
-            };
+            });
 
-            const result = await dbClient.bookingsCollection.insertOne(newBooking);
+            newBooking._id = newBooking._id.toString();
 
             // Update room availability
-            await dbClient.roomsCollection.updateOne(
-                { _id: new ObjectId(roomId) },
+            await Room.updateOne(
+                { _id: room._id },
                 { $inc: { available: -1 } } // Decrease the available rooms by 1
             );
 
-            return res.status(201).json({
-                _id: result.insertedId.toString(),
-                ...newBooking
-            });
+            return res.status(201).json(newBooking);
         } catch (error) {
             return res.status(500).json({ message: 'Error creating booking', error });
         }
@@ -60,15 +53,9 @@ class BookingsController {
 
     /* GET /bookings: returns all the bookings from the bookingsCollection */
     async getBookings(req, res) {
-        // Fetch all bookings (toArray because find() returns a cursor)
-        let bookings = await dbClient.bookingsCollection.find().toArray();
+        let bookings = await Booking.find().lean();
 
-        bookings = bookings.map((booking) => {
-            return {
-                _id: booking._id.toString(),
-                ...booking
-            };
-        });
+        bookings.forEach((booking) => { booking._id = booking._id.toString(); });
 
         return res.status(200).json(bookings);
     }
@@ -76,7 +63,21 @@ class BookingsController {
 
     /* GET /bookings/id: returns the booking with the id */
     async getBookingByID(req, res) {
-        res.send('Get booking by id');
+        let bookingId = req.params.id;
+
+        if (!bookingId) {
+            return res.status(400).json({ message: 'Booking ID is required' });
+        }
+
+        let booking = await Booking.findById({ _id: new ObjectId(bookingId) }).populate('user').populate('room').lean();
+        
+        if (!booking) {
+            return res.status(404).json({ message: 'Booking not found' });
+        }
+
+        booking._id = booking._id.toString();
+
+        return res.status(200).json(booking);
     }
 
 

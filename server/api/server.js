@@ -24,10 +24,7 @@ app.use('/', routes);
 // Ensure the database connection is established before running the API app
 (async () => {
     // Connect to MongoDB using Mongoose
-    await mongoose.connect('mongodb://localhost:27017/hotel', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect('mongodb://localhost:27017/hotel');
 
     app.listen(port, () => {
         console.log(`API is running on port ${port}`);

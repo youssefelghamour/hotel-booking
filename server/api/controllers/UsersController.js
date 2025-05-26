@@ -27,7 +27,7 @@ class UsersController {
                 email: newUser.email,
             });
         } catch (error) {
-            return res.status(500).json({ message: 'Error creating user', error });
+            return res.status(500).json({ message: 'Error creating user', error: error.message });
         }
     }
 

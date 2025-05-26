@@ -27,6 +27,14 @@ class BookingForm extends Component {
         };
     }
 
+    componentDidUpdate(prevProps) {
+        // Update the room in state with the new room prop
+        // This is to ensure that the form updates when a new room is selected
+        if (prevProps.room !== this.props.room) {
+            this.setState({room: this.props.room });
+        }
+    }
+
     handleInputChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     };

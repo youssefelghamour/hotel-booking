@@ -46,17 +46,17 @@ class Rooms extends Component {
 
     async componentDidMount() {
         try {
-          const response = await fetch('http://localhost:5000/rooms', {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
-      
-          const data = await response.json();
-          this.setState({ rooms: data });
+            const response = await fetch('http://localhost:5000/rooms', {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json'
+                }
+            });
+        
+            const data = await response.json();
+            this.setState({ rooms: data });
         } catch (error) {
-          console.error('Error fetching rooms:', error);
+            console.error('Error fetching rooms:', error);
         }
     }
 

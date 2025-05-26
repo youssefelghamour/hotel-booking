@@ -1,4 +1,4 @@
-const dbClient = require('../../utils/db');
+const Room = require('../models/Room');
 
 
 /**
@@ -13,14 +13,10 @@ class RoomsController {
 
     /* GET /rooms: returns all the rooms from the roomsCollection */
     async getRooms(req, res) {
-        // Fetch all rooms (toArray because find() returns a cursor)
-        let rooms = await dbClient.roomsCollection.find().toArray();
+        let rooms = await Room.find().lean();
 
-        rooms = rooms.map((room) => {
-            return {
-                _id: room._id.toString(),
-                ...room
-            };
+        rooms.forEach((room) => {
+            room._id = room._id.toString();
         });
 
         return res.status(200).json(rooms);
