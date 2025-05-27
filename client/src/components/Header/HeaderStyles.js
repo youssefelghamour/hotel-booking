@@ -11,10 +11,17 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: 'white',
         padding: '1% 3%',
-        justifyContent: 'space-between',
-        position: 'absolute',
-        zIndex: '1',
-        background: 'transparent',
+        justifyContent: 'space-around',
+        position: 'fixed',
+        zIndex: '100',
+        backgroundColor: '#212121d4',
+        backdropFilter: 'blur(10px)',
+        color: 'white',
+    },
+
+    scrolledHeader: {
+        boxShadow: '0 8px 16px #0003',
+        transition: 'background-color 0.55s ease',
     },
   
     headerLogoContainer: {
@@ -25,7 +32,6 @@ const styles = StyleSheet.create({
     appHeaderTitle: {
         fontSize: 18,
         marginLeft: 10,
-        color: 'white',
     },
   
     headerLogo: {
@@ -41,14 +47,15 @@ const styles = StyleSheet.create({
   
     navLink: {
         textDecoration: 'none',
-        color: 'white',
-        fontSize: 17,
+        fontSize: 15,
         margin: '0 12px',
-        transition: 'transform 0.3s ease',
+        transition: 'color 0.3s ease',
         fontWeight: 'bold',
+        color: '#e6d3b3',
+        fontFamily: 'Montserrat, sans-serif',
 
         ':hover': {
-            transform: 'scale(1.1)',
+            color: 'white',
         },
     },
 });

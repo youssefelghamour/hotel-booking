@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
     rooms: {
         padding: '2rem',
         position: 'relative',
-        top: '-220px',
+        top: '-200px',
     },
 
     header: {
