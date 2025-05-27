@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: '146px',
         fontFamily: 'Raleway, sans-serrif',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
     },
 
     heroText: {
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
         fontSize: '30px',
         fontFamily: 'Raleway, sans-serrif',
         top: '40%',
+        textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
     },
 });
 

@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { css } from 'aphrodite';
 import styles from "./RoomsStyles";
+import { IoTvOutline } from "react-icons/io5";
+import { IoWifiOutline } from "react-icons/io5";
+import { MdOutlineRoomService } from "react-icons/md";
+import { MdOutlineCoffeeMaker } from "react-icons/md";
+import { PiBathtub } from "react-icons/pi";
+import { RiSafeLine } from "react-icons/ri";
+import { IoBedOutline } from "react-icons/io5";
+
+
 
 const images = {
     "Single room": require('../../assets/single.jpg'),
@@ -24,10 +33,19 @@ class Room extends Component {
                 alt={type}
                 className={css(styles.roomImage)}
             />
-            <div>
+            <div className={css(styles.roomInfo)}>
                 <h3 className={css(styles.roomTitle)}>{type}</h3>
-                <p className={css(styles.roomText)}>Price: ${price}</p>
-                <p className={css(styles.roomText)}>Available: {available}</p>
+                <div className={css(styles.roomAmenities)}>
+                    {type !== "Single room" && <IoBedOutline />}
+                    <IoTvOutline />
+                    <IoWifiOutline />
+                    <MdOutlineRoomService />
+                    <MdOutlineCoffeeMaker />
+                    <PiBathtub />
+                    {(type === "Royal suite" || type === "Presidential Suite") && <RiSafeLine />}
+                </div>
+                <p className={css(styles.roomPrice)}><b>${price}</b></p>
+                <p className={css(styles.roomAvailability)}>{available} available rooms</p>
                 <button className={css(styles.button)} disabled={available === 0} onClick={() => this.props.onBook(room)}>Book Now</button>
             </div>
             
