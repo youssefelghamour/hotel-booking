@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const dbClient = require('../../utils/db');
+const User = require('../models/User');
 
 
 /**
@@ -11,7 +11,7 @@ class AuthController {
         const { email, password } = req.body;
 
         try {
-            const user = await dbClient.usersCollection.findOne({ email });
+            const user = await User.findOne({ email }).lean();
 
             if (!user || user.password !== password) {
                 return res.status(401).json({ message: 'Invalid credentials' });

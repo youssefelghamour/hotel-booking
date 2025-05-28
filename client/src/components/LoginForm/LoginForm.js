@@ -1,15 +1,15 @@
 import { css } from 'aphrodite';
 import React, { Component } from 'react';
-import styles from './LoginStyles';
+import styles from './LoginFormStyles';
 
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        email: '',
-        password: '',
-        error: '',
+      email: '',
+      password: '',
+      error: '',
     };
   }
 
@@ -47,45 +47,49 @@ class Login extends Component {
 
   render() {
     const { email, password, error } = this.state;
-    const { loggedIn, handleLogout } = this.props;
+    const { loggedIn } = this.props;
 
     if (loggedIn) {
         return (
             <div>
             <p>Welcome back!</p>
-            <button onClick={handleLogout}>Logout</button>
+            <button>Logout</button>
             </div>
         );
     }
 
     return (
         <div className={css(styles.LoginContainer)}>
-            <h2>Login</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            
-            <form onSubmit={this.handleSubmit}>
-            <div>
-                <label>Email</label>
-                <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={this.handleChange}
-                required
-                />
-            </div>
-            <div>
-                <label>Password</label>
-                <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={this.handleChange}
-                required
-                />
-            </div>
-            <button type="submit">Login</button>
-            </form>
+          <h2>Log in to Your Account</h2>
+          <p style={{ marginTop: 0, color: 'gray', fontSize: '14px' }}>Use the email used for your reservation</p>
+    
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          
+          <form className={css(styles.loginForm)} onSubmit={this.handleSubmit}>
+            <input
+              className={css(styles.inputField)}
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={this.handleChange}
+              required
+            />
+            <input
+              className={css(styles.inputField)}
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={this.handleChange}
+              required
+            />
+            <button className={css(styles.submitButton)} type="submit">Login</button>
+          </form>
+          
+          <p className={css(styles.helpText)}>
+            Need help? <a href="mailto:support@aurumhotel.com">Contact support</a>
+          </p>
         </div>
     );
   }

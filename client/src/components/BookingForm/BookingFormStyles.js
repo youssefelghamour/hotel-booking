@@ -18,9 +18,11 @@ const styles = StyleSheet.create({
         maxWidth: '600px',
         margin: '0 auto',
         background: '#fff',
-        boxShadow: 'rgb(0 0 0 / 21%) 4px 4px 16px',
+        //boxShadow: 'rgb(0 0 0 / 21%) 4px 4px 16px',
         position: 'relative',
         width: '700px',
+        borderRadius: '6px',
+        border: '1px solid #d3d3d39c',
     },
 
     header: {
@@ -51,6 +53,7 @@ const styles = StyleSheet.create({
         fontSize: '1rem',
         border: '1px solid #ccc',
         borderRadius: '4px',
+        backgroundColor: '#c8c8c81a',
     },
 
     roomInfo: {
