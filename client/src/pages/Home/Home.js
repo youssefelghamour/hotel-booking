@@ -1,14 +1,14 @@
 import { Component } from 'react';
-import './Home.css';
-import Header from '../components/Header/Header';
-import Hero from '../components/Hero/Hero';
-import Rooms from '../components/Rooms/Rooms';
-import BookingForm from '../components/BookingForm/BookingForm';
-import Login from '../components/Login/Login';
-import Footer from '../components/Footer/Footer';
+import "./Home.css";
+import Header from '../../components/Header/Header';
+import Hero from '../../components/Hero/Hero';
+import Rooms from '../../components/Rooms/Rooms';
+import BookingForm from '../../components/BookingForm/BookingForm';
+import Login from '../../components/Login/Login';
+import Footer from '../../components/Footer/Footer';
 import { FaCheck } from "react-icons/fa";
 import { css } from 'aphrodite';
-import styles from '../AppStyles';
+import styles from '../../AppStyles';
 import { jwtDecode } from 'jwt-decode';
 
 

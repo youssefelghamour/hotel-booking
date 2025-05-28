@@ -6,8 +6,11 @@ const styles = StyleSheet.create({
         gridTemplateColumns: '1fr 1fr',
         gap: '25px',
         width: '92%',
-        top: '-170px',
+        //top: '-170px',
         position: 'relative',
+        alignItems: 'center',
+        justifySelf: 'center',
+        marginTop: 'calc(5.5rem + 2%)', // to account for the header (3.5rem header + 2rem topHeader) and header padding (2%)
     },
 
     bookingForm: {
